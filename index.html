@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SQL Motion: watch SQL Server queries run</title>
+<meta name="description" content="Animated, row-by-row lessons for SQL Server, from first SELECT to recursive CTEs, built on a small healthcare claims dataset.">
+<script>try{var t=localStorage.getItem("sqlTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--pg:#F6F7F4;--panel:#FFFFFF;--ink:#14181F;--mut:#5B6573;--hair:#E1E4DD;--acc:#0E7C6B;--acc-t:#DDF3EE;--onacc:#FFFFFF;--k:#16A34A;--r:#DC2626;--b:#2563EB;
+ --sans:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pg:#0A0F1A;--panel:#111827;--ink:#E8EDF5;--mut:#94A3B8;--hair:#1F2A3C;--acc:#2DD4BF;--acc-t:rgba(45,212,191,.14);--onacc:#04201B;--k:#4ADE80;--r:#F87171;--b:#60A5FA}}
+:root[data-theme="dark"]{--pg:#0A0F1A;--panel:#111827;--ink:#E8EDF5;--mut:#94A3B8;--hair:#1F2A3C;--acc:#2DD4BF;--acc-t:rgba(45,212,191,.14);--onacc:#04201B;--k:#4ADE80;--r:#F87171;--b:#60A5FA}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--pg);color:var(--ink);font:400 1.02rem/1.6 var(--sans);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.wrap{max-width:980px;margin:0 auto;padding:48px 22px 64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:56px}
+.logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--b));color:#fff;display:grid;place-items:center;font:600 .74rem var(--mono)}
+h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 18px;max-width:14ch}
+.lede{color:var(--mut);font-size:1.12rem;max-width:56ch;margin:0 0 40px}
+/* hero: rows sorting themselves through a WHERE gate */
+.demo{background:var(--panel);border:1px solid var(--hair);border-radius:18px;padding:18px;margin-bottom:56px;overflow:hidden}
+.demo code{font:500 .86rem var(--mono);color:var(--mut)}
+.lanes{position:relative;height:196px;margin-top:12px}
+.lane-t{position:absolute;font:600 .76rem var(--mono);color:var(--mut)}
+.row{position:absolute;left:0;height:30px;width:min(250px,42%);display:flex;align-items:center;gap:14px;padding:0 12px;border:1.5px solid var(--hair);border-radius:8px;background:var(--panel);font:.82rem var(--mono);transition:transform 1.7s cubic-bezier(.33,0,.2,1),border-color .8s,background-color .8s}
+.row.k{border-color:var(--k);background:color-mix(in srgb,var(--k) 12%,var(--panel))}
+.row.r{border-color:var(--r);background:color-mix(in srgb,var(--r) 12%,var(--panel));text-decoration:line-through;color:var(--mut)}
+.row.c{border-color:var(--b);box-shadow:0 0 0 3px color-mix(in srgb,var(--b) 30%,transparent)}
+.say{min-height:1.6em;margin-top:6px;font:.86rem var(--mono)}
+.levels{display:grid;gap:0;border-top:1px solid var(--hair)}
+.lv{display:grid;grid-template-columns:120px 1fr auto;gap:22px;align-items:start;padding:26px 0;border-bottom:1px solid var(--hair);color:inherit;text-decoration:none}
+.lv:hover h2,.lv:focus-visible h2{color:var(--acc)}
+.lv:focus-visible{outline:3px solid var(--acc);outline-offset:4px;border-radius:6px}
+.lv .n{font:500 .9rem var(--mono);color:var(--mut);padding-top:6px}
+.lv h2{margin:0 0 6px;font-size:1.55rem;letter-spacing:-.02em;transition:color .2s}
+.lv p{margin:0;color:var(--mut);max-width:60ch}
+.go{align-self:center;background:var(--acc);color:var(--onacc);font:600 .9rem var(--sans);padding:10px 16px;border-radius:999px;white-space:nowrap}
+.foot{margin-top:40px;color:var(--mut);font-size:.9rem;max-width:62ch}
+@media (max-width:640px){.lv{grid-template-columns:1fr;gap:6px}.go{justify-self:start;margin-top:8px}.brand{margin-bottom:36px}}
+@media (prefers-reduced-motion: reduce){.row{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="logo">SQL</span>SQL Motion</div>
+  <h1>Watch every row move through your query.</h1>
+  <p class="lede">Animated SQL Server lessons where each clause works one row at a time, with arrows showing where every value goes. Pause any moment, step one move forward or back, and slow it down until it clicks.</p>
+
+  <div class="demo" aria-label="Example animation: WHERE amount >= 300">
+    <code>WHERE amount &gt;= 300</code>
+    <div class="lanes" id="lanes"><span class="lane-t" style="left:0;top:0">rows to check</span><span class="lane-t" id="kt" style="top:0">✓ kept</span><span class="lane-t" id="rt" style="top:104px">✕ removed</span></div>
+    <div class="say" id="say" aria-live="polite"></div>
+  </div>
+
+  <nav class="levels" aria-label="Levels">
+    <a class="lv" href="beginner.html"><span class="n">Topics 1–17</span><div><h2>Beginner</h2><p>Tables and keys, data types, SELECT, WHERE, sorting, functions, CASE, aggregates, GROUP BY and HAVING, and changing data.</p></div><span class="go">Start beginner</span></a>
+    <a class="lv" href="intermediate.html"><span class="n">Topics 18–39</span><div><h2>Intermediate</h2><p>Execution order, every kind of join, subqueries, CTEs, window functions, pivoting, design, procedures, transactions and indexes. Includes a drag-and-drop query builder.</p></div><span class="go">Start intermediate</span></a>
+    <a class="lv" href="advanced.html"><span class="n">Topics 40–57</span><div><h2>Advanced</h2><p>Recursive CTEs, advanced frames and analytics, execution plans, tuning, isolation and locking, dynamic SQL, triggers, partitioning, security and recovery.</p></div><span class="go">Start advanced</span></a>
+  </nav>
+
+  <p class="foot">Every page is a single file that works offline once loaded. Examples use a small, made-up health-plan dataset (members, claims, plans). Progress and your light or dark choice are saved in your browser.</p>
+</div>
+<script>
+(function(){
+ const D=[['C1','250.00',true],['C2','1200.00',true],['C3','480.00',true],['C4','90.00',false],['C5','35.00',false],['C8','NULL',null]];
+ const lanes=document.getElementById('lanes'),say=document.getElementById('say');
+ const els=D.map(d=>{const e=document.createElement('div');e.className='row';e.innerHTML=`<b>${d[0]}</b><span>${d[1]}</span>`;lanes.appendChild(e);return e});
+ const W=()=>lanes.clientWidth,colX=()=>Math.max(W()*0.52,W()-Math.min(250,W()*0.42));
+ const place=(e,x,y)=>{e.style.transform=`translate(${x}px,${y}px)`};
+ const kt=document.getElementById('kt'),rt=document.getElementById('rt');
+ const reset=()=>{els.forEach((e,i)=>{e.className='row';e.style.transition='none';place(e,0,22+i*28)});kt.style.left=rt.style.left=colX()+'px';void lanes.offsetWidth;els.forEach(e=>e.style.transition='')};
+ const reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+ let i=0,k=0,r=0,t;
+ const tick=()=>{if(i>=D.length){t=setTimeout(()=>{i=k=r=0;reset();say.textContent='';t=setTimeout(tick,900)},3200);return}
+  const d=D[i],e=els[i];e.className='row c';say.textContent=`${d[0]}: ${d[1]} >= 300 → ${d[2]===null?'UNKNOWN':d[2]?'TRUE':'FALSE'}`;
+  t=setTimeout(()=>{e.className='row '+(d[2]?'k':'r');place(e,colX(),d[2]?22+k++*28:126+r++*28-((r>1)?0:0));say.textContent=`${d[0]} moves to ${d[2]?'kept':'removed'}`;i++;t=setTimeout(tick,2000)},1500)};
+ reset();if(reduce){D.forEach((d,j)=>{els[j].className='row '+(d[2]?'k':'r');place(els[j],colX(),d[2]?22+k++*28:126+r++*28)});say.textContent='3 kept, 3 removed (NULL is UNKNOWN, so it is removed too)'}else t=setTimeout(tick,800);
+ addEventListener('resize',()=>{clearTimeout(t);i=k=r=0;reset();say.textContent='';t=setTimeout(tick,600)});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)clearTimeout(t);else{clearTimeout(t);i=k=r=0;reset();t=setTimeout(tick,600)}});
+})();
+</script>
+</body>
+</html>
