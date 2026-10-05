@@ -506,6 +506,59 @@ body{background:var(--pg);color:var(--ink2);font-family:var(--sans);padding-bott
 .logo{background:linear-gradient(135deg,var(--vio),var(--blue))}
 .player{box-shadow:0 10px 40px -28px rgba(0,0,0,.4)}
 @media (max-width:560px){.ctrl{flex-wrap:wrap}.tline{order:9;flex-basis:100%}.cb.play{height:44px}}
+/* ---------- v2: solving bubble, flowchart, call tree, slots ---------- */
+.ci.free.evb{justify-content:flex-start;gap:10px;padding:0 12px;border:1.5px dashed var(--line);background:var(--card);border-radius:12px;font:600 .9rem var(--mono);white-space:nowrap;overflow:hidden}
+.ci.free.evb .evl{font:700 .6rem var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);flex:0 0 auto}
+.ci.free.evb code{font:inherit;background:none;border:0;padding:0}
+.ci.free.evb.hot{border-style:solid;border-color:var(--amber-b);background:var(--amber-t)}
+.ci.free.evb.idle{opacity:.45}
+.ci.free.rtok{background:var(--green-t);border:2px solid var(--green);border-radius:999px;font:700 .82rem var(--mono);color:var(--ink)}
+.ci.free.fedges{border:0;background:transparent;overflow:visible;align-items:flex-start;justify-content:flex-start}
+.fesvg,.tesvg{overflow:visible}
+.fesvg path{fill:none;stroke:var(--line);stroke-width:1.6}.fesvg .fah{fill:var(--line);stroke:none}.fesvg .fahh{fill:var(--vio);stroke:none}
+.fesvg path.hot{stroke:var(--vio);stroke-width:3;stroke-dasharray:7 6;animation:fdash .9s linear infinite}
+.fesvg text{font:600 9px var(--mono);fill:var(--muted)}.fesvg text.hot{fill:var(--vio2);font-size:10px}
+@keyframes fdash{to{stroke-dashoffset:-26}}
+.paused .fesvg path.hot,.pgscreen.paused .fesvg path.hot{animation-play-state:paused}
+.ci.free.fnode{font:600 .7rem var(--mono);border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:0 8px;white-space:nowrap;overflow:hidden;border-radius:6px}
+.ci.free.fnode.k-dec{clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%);background:var(--blue-t);border:0;padding:0 14px}
+.ci.free.fnode.k-def{border-radius:999px;border-style:dashed}
+.ci.free.fnode.k-ret,.ci.free.fnode.k-end{border-radius:999px;background:var(--soft)}
+.ci.free.fnode.k-jmp{border-color:var(--amber-b)}
+.ci.free.fnode.seen{border-color:var(--vio)}
+.ci.free.fnode.k-dec.seen{background:color-mix(in srgb,var(--vio) 18%,var(--card))}
+.ci.free.fnode.cur{background:var(--vio);color:var(--onacc);border-color:var(--vio);box-shadow:0 0 0 4px var(--vio-t)}
+.ci.free.fnode.k-dec.cur{background:var(--vio)}
+.tesvg path{fill:none;stroke:var(--line);stroke-width:2}.tesvg path.done{stroke:var(--green)}
+.ci.free.tnode{flex-direction:column;gap:0;font:600 .72rem var(--mono);border:1.5px solid var(--line);background:var(--card);border-radius:9px;line-height:1.15;color:var(--ink)}
+.ci.free.tnode b{font-size:.68rem;color:var(--green)}
+.ci.free.tnode.active{border-color:var(--vio);background:var(--vio-t);box-shadow:0 0 0 3px var(--vio-t)}
+.ci.free.tnode.waiting{border-color:var(--blue);border-style:dashed}
+.ci.free.tnode.done{border-color:var(--green);background:var(--green-t)}
+.ci.free.oidx{border:0;background:transparent;font:500 .58rem var(--mono);color:var(--muted);justify-content:center;height:11px}
+.ci.free.slot.moved{box-shadow:0 0 0 3px var(--fn)}
+.ci.free.fh .dep{font:600 .6rem var(--mono);color:var(--muted);margin-left:6px}
+.viewbar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:8px 14px 0;font:600 .74rem var(--sans);color:var(--muted)}.viewbar label{display:inline-flex;gap:5px;align-items:center;cursor:pointer;color:var(--ink)}.viewbar input{accent-color:var(--vio);width:15px;height:15px}
+
+/* ---------- v3: readable phases ---------- */
+.ci.pdim{filter:opacity(.42) saturate(.6)}
+.screen .narr{font:500 1.02rem/1.65 var(--sans);padding:12px 16px;min-height:4.6em}
+.screen .narr code,.pgnarr code{font:600 .86em var(--mono);background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.pgnarr{font:500 .96rem/1.6 var(--sans)}
+.narr .lnq{display:block;margin-top:4px;opacity:.85}
+.narr b{color:var(--vio2)}
+.ci.free.vn.freshn{color:var(--vio2);text-decoration:underline;text-decoration-color:var(--amber-b);text-underline-offset:4px}
+
+.viewbar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:8px 14px 0;font:600 .74rem var(--sans);color:var(--muted)}.viewbar label{display:inline-flex;gap:5px;align-items:center;cursor:pointer;color:var(--ink)}.viewbar input{accent-color:var(--vio);width:15px;height:15px}
+.ci.free.code{justify-content:flex-start;border:0;background:transparent;font:500 .8rem/1 var(--mono);white-space:pre;padding:0 8px;border-radius:6px;color:var(--ink);overflow:hidden}
+.ci.free.code .lnum{display:inline-block;width:20px;text-align:right;margin-right:10px;color:var(--muted);opacity:.7}
+.ci.free.code.cur{background:var(--blue-t);box-shadow:inset 3px 0 0 var(--blue)}
+.ci.free.ptr{border:0;background:transparent;color:var(--vio);font-size:1.05rem}
+.ci.free.lab2{border:0;background:transparent;justify-content:flex-start;font:700 .68rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ci.free.evb.wrap{white-space:normal;align-items:center;line-height:1.35}.ci.free.evb.wrap code{white-space:normal;word-break:break-word}
+.ci.free.onode{justify-content:flex-start;gap:6px;font:600 .72rem var(--mono)}.ci.free.onode b{color:var(--vio2)}.ci.free.onode.cur b{color:var(--onacc)}.ci.free.onode .ot{font-weight:500;opacity:.75;overflow:hidden;text-overflow:ellipsis}
+.screen .narr{font:500 1.02rem/1.65 var(--sans)}
+.pk{color:var(--fn);font-weight:600}
 </style>
 </head>
 <body>
@@ -525,6 +578,7 @@ body{background:var(--pg);color:var(--ink2);font-family:var(--sans);padding-bott
       <div class="ph"><div><div class="kick" id="kick"></div><h1 id="title"></h1><p id="sub"></p></div></div>
       <div class="screen">
         <div class="legend2" aria-label="Key"><span><i style="border-color:var(--green);background:var(--green-t)"></i>kept</span><span><i style="border-color:var(--red);background:var(--red-t)"></i>removed</span><span><i style="border-color:var(--amber-b);background:var(--amber-t)"></i>new / NULL-filled</span><span><i style="border-color:var(--blue);background:var(--blue-t)"></i>being checked</span><span><i style="border-color:var(--line);border-style:dashed"></i>already moved</span><span><i style="border-color:var(--vio);box-shadow:0 0 0 2px var(--glow)"></i>moving now</span></div>
+        <div class="viewbar" id="viewbar"><span>Show</span><label><input type="checkbox" data-v="order" checked> Run order</label></div>
         <div class="scene" id="scene"></div>
         <div class="narr" id="narr" aria-live="polite"></div>
       </div>
@@ -814,6 +868,34 @@ function exprP(n,ctx){const P=x=>exprP(x,ctx),wrap=(x,par)=>{const t=P(x);return
   case'agg':{const src=`${n.f}(${n.dist?'DISTINCT ':''}${n.star?'*':exprP(n.e,null)})`;return ctx&&ctx.group?`${src}=${val()??'?'}`:src}
   case'win':return `${n.f}() OVER (…)`;default:return'?'}}
 const exprSrc=n=>exprP(n,null);
+/* ---------- step-by-step solving (one piece at a time) ---------- */
+function prN(n){if(!n||typeof n!=='object')return String(n);const P=prN,W=(x,par)=>{const t=P(x);return x&&x.k===par?`(${t})`:t};
+ switch(n.k){case'lit':return vtxt(n.v);case'col':return n.raw;case'part':return n.v;
+  case'ar':case'cmp':return `${W(n.l,'or')} ${n.op} ${W(n.r,'or')}`;case'and':return `${W(n.l,'or')} AND ${W(n.r,'or')}`;case'or':return `${P(n.l)} OR ${P(n.r)}`;
+  case'not':return `NOT ${P(n.e)}`;case'isnull':return `${P(n.e)} IS ${n.neg?'NOT ':''}NULL`;case'in':return `${P(n.e)} ${n.neg?'NOT ':''}IN (${n.L.map(P).join(', ')})`;
+  case'between':return `${P(n.e)} ${n.neg?'NOT ':''}BETWEEN ${P(n.a)} AND ${P(n.b)}`;case'like':return `${P(n.e)} ${n.neg?'NOT ':''}LIKE ${P(n.pat)}`;
+  case'case':return `CASE ${n.base?P(n.base)+' ':''}${n.W.slice(0,1).map(([c,r])=>`WHEN ${P(c)} THEN ${P(r)}`).join(' ')}${n.W.length>1?' …':''}${n.el?' ELSE '+P(n.el):''} END`;
+  case'cast':return `${n.tr?'TRY_':''}CAST(${P(n.e)} AS ${n.ty}${n.args&&n.args.length?'('+n.args.join(',')+')':''})`;
+  case'fn':return `${n.f}(${n.A.map(P).join(', ')})`;default:return exprP(n,null)}}
+function clN(n){if(Array.isArray(n))return n.map(clN);if(n&&typeof n==='object'&&n.k){const o={};for(const key in n)o[key]=(key==='q'||key==='v')?n[key]:clN(n[key]);return o}return n}
+function redSteps(n0,ctx,max=8){const out=[];const add=t=>{if(out[out.length-1]!==t)out.push(t)};try{add(prN(n0))}catch(e){return null}
+ const atomic=x=>['agg','win','subq','exists','insub'].includes(x.k);
+ const subCols=x=>{if(!x||typeof x!=='object'||!x.k)return x;if(x.k==='col'){try{return{k:'lit',v:ev(x,ctx)}}catch(e){return x}}if(atomic(x)||x.k==='lit')return x;
+  for(const key of Object.keys(x)){if(key==='q'||key==='v')continue;const v=x[key];if(Array.isArray(v))x[key]=v.map(z=>Array.isArray(z)?z.map(subCols):subCols(z));else if(v&&typeof v==='object'&&v.k)x[key]=subCols(v)}return x};
+ const lit=v=>({k:'lit',v});const evl=x=>{try{return{n:lit(ev(x,ctx)),ch:true}}catch(e){return{n:x,ch:false}}};
+ const kids=x=>{switch(x.k){case'ar':case'cmp':case'and':case'or':return[['l'],['r']];case'not':case'isnull':case'cast':return[['e']];case'between':return[['e'],['a'],['b']];case'like':return[['e'],['pat']];
+  case'in':return[['e'],...x.L.map((_,i)=>['L',i])];case'fn':return x.A.map((_,i)=>['A',i]);default:return[]}};
+ const get=(x,p)=>p.length===1?x[p[0]]:x[p[0]][p[1]],set=(x,p,v)=>{if(p.length===1)x[p[0]]=v;else x[p[0]][p[1]]=v};
+ const step=x=>{if(!x||typeof x!=='object'||x.k==='lit'||x.k==='col'||x.k==='part')return{n:x,ch:false};if(atomic(x))return evl(x);
+  if(x.k==='case'){if(x.base)return evl(x);if(!x.W.length)return{n:x.el||lit({t:'null'}),ch:true};const [c,r]=x.W[0];if(c.k!=='lit'){const s=step(c);if(s.ch){x.W[0]=[s.n,r];return{n:x,ch:true}}return evl(x)}
+   if(c.v===true)return{n:r,ch:true};x.W.shift();return{n:x,ch:true}}
+  if(x.k==='and'||x.k==='or'){if(x.l.k!=='lit'){const s=step(x.l);if(s.ch){x.l=s.n;return{n:x,ch:true}}return evl(x)}const lv=x.l.v;if(x.k==='and'&&lv===false)return{n:lit(false),ch:true};if(x.k==='or'&&lv===true)return{n:lit(true),ch:true};
+   if(x.r.k!=='lit'){const s=step(x.r);if(s.ch){x.r=s.n;return{n:x,ch:true}}}return evl(x)}
+  for(const p of kids(x)){const c=get(x,p);if(c&&c.k&&c.k!=='lit'&&c.k!=='part'){const s=step(c);if(s.ch){set(x,p,s.n);return{n:x,ch:true}}return evl(x)}}
+  return evl(x)};
+ let n=subCols(clN(n0));add(prN(n));for(let i=0;i<max;i++){const s=step(n);if(!s.ch)break;n=s.n;add(prN(n))}
+ return out.map(t=>t.length>90?t.slice(0,89)+'…':t)}
+
 /* ---------- execution ---------- */
 const exprText=n=>JSON.stringify(n,(k,v)=>k==='raw'||k==='id'?undefined:typeof v==='bigint'?v.toString()+'n':v).toLowerCase();
 const keyStr=v=>v.t==='null'?'\u0000':String(show(v)).toLowerCase().replace(/ +$/,'');
@@ -871,7 +953,7 @@ function execSelect(q,env,outer,stages,st){const order=st&&st.order,offset=st?st
     right:isAp?null:{name:j.t.name||j.t.alias,cols:sR.cols,rows:sR.rows.map(x=>({k:x.__k,v:sR.cols.map(c=>show(x[c]))}))},
     rows:rows.map(r=>{const lk=rkOf(before,r),rr=r[sR.alias];const lnull=before.every(b=>r[b.alias]===null);return{k:rk(r),v:viewRow(srcs,r),nulls:srcs.some(s=>r[s.alias]===null),lk,rk:rr?rr.__k:'∅',lnull,why:rr&&!lnull&&j.on?exprP(j.on,{...ctx0,row:r}):null}})})}}
  if(q.where){if(hasK(q.where,'agg'))E(147,'An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.');if(hasK(q.where,'win'))E(4108,'Windowed functions can only appear in the SELECT or ORDER BY clauses.');
-  const ver=rows.map(r=>truth(q.where,{...ctx0,row:r}));if(stages)stages.push({id:'WHERE',label:'WHERE',src:exprSrc(q.where),cols:heads(),rows:rows.map((r,i)=>({k:rk(r),v:viewRow(srcs,r),tv:ver[i],why:exprP(q.where,{...ctx0,row:r})}))});rows=rows.filter((_,i)=>ver[i]===true)}
+  const ver=rows.map(r=>truth(q.where,{...ctx0,row:r}));if(stages)stages.push({id:'WHERE',label:'WHERE',src:exprSrc(q.where),cols:heads(),rows:rows.map((r,i)=>({k:rk(r),v:viewRow(srcs,r),tv:ver[i],why:exprP(q.where,{...ctx0,row:r}),steps:redSteps(q.where,{...ctx0,row:r})}))});rows=rows.filter((_,i)=>ver[i]===true)}
  const items=q.cols.flatMap(c=>{if(c.star){if(c.of&&!srcs.some(s=>s.alias===c.of))E(4104,`The multi-part identifier "${c.of}" could not be bound.`);if(!srcs.length)E(263,'Must specify table to select from.');return srcs.filter(s=>!c.of||s.alias===c.of).flatMap(s=>s.cols.map(k=>({e:{k:'col',t:s.alias,c:k,raw:k},al:k,star:true})))}return[c]});
  const aggQ=q.group||items.some(c=>hasK(c.e,'agg'))||q.having;const selCols=items.map(c=>c.al||(c.e.k==='col'?c.e.c:'(No column name)'));
  let units;// [{k, ctx}]
@@ -881,7 +963,7 @@ function execSelect(q,env,outer,stages,st){const order=st&&st.order,offset=st?st
   let groups=[...gk.values()];if(!gex.length&&!groups.length)groups=[{rows:[],label:[],key:''}];const gctx=(g,w2)=>({...ctx0,group:g,groupOK,gex,where2:w2});
   const glabel=g=>gex.length?g.label.map(x=>x===null?'NULL':x).join(' · '):'all rows';
   if(stages)stages.push({id:'GROUP BY',by:gex.map(exprSrc).join(', '),label:gex.length?'GROUP BY':'aggregate (one group)',groups:groups.map(g=>({k:'g:'+g.key,label:glabel(g),members:g.rows.map(rk)}))});
-  if(q.having){const ver=groups.map(g=>truth(q.having,gctx(g,'HAVING clause')));if(stages)stages.push({id:'HAVING',label:'HAVING',src:exprSrc(q.having),groups:groups.map((g,i)=>({k:'g:'+g.key,label:glabel(g),members:g.rows.map(rk),tv:ver[i],why:exprP(q.having,gctx(g,'HAVING clause'))}))});groups=groups.filter((_,i)=>ver[i]===true)}
+  if(q.having){const ver=groups.map(g=>truth(q.having,gctx(g,'HAVING clause')));if(stages)stages.push({id:'HAVING',label:'HAVING',src:exprSrc(q.having),groups:groups.map((g,i)=>({k:'g:'+g.key,label:glabel(g),members:g.rows.map(rk),tv:ver[i],why:exprP(q.having,gctx(g,'HAVING clause')),steps:redSteps(q.having,gctx(g,'HAVING clause'))}))});groups=groups.filter((_,i)=>ver[i]===true)}
   units=groups.map(g=>({k:'g:'+g.key,ctx:gctx(g,'select list')}))}
  else units=rows.map(r=>({k:rk(r),ctx:{...ctx0,row:r}}));
  // windows
@@ -914,7 +996,7 @@ function execSelect(q,env,outer,stages,st){const order=st&&st.order,offset=st?st
  const view=o=>o.vals.map(show);
  if(stages&&winInfo.length){const wi=winInfo[0];const wcols=items.map((c,i)=>hasK(c.e,'win')?i:-1).filter(i=>i>=0);const order0=sortWith(units.map((_,i)=>i),i=>[...wi.w.w.part.map(e=>ev(e,units[i].ctx)),...wi.w.w.order.map(o=>ev(o.e,units[i].ctx))],[...wi.w.w.part.map(()=>'ASC'),...wi.w.w.order.map(o=>o.d)]).map(x=>x.x);
   stages.push({id:'WINDOW',label:'window functions (OVER)',cols:selCols,calc:wcols,wf:wins[0].f,wcol:items.findIndex(c=>{let f=false;walk(c.e,x=>{if(x===wins[0])f=true});return f}),rows:order0.map(i=>({k:outRows[i].k,v:view(outRows[i]),g:'g'+(wi.pk.indexOf(wi.part[i])%6),pos:FI[i]?FI[i].pos:0,fk:FI[i]&&FI[i].fidx?FI[i].fidx.map(u=>outRows[u].k):null}))})}
- if(stages)stages.push({id:'SELECT',label:'SELECT',cols:selCols,rows:outRows.map(o=>({k:o.k,v:view(o)}))});
+ if(stages){const comp=items.map((c,i)=>c.e.k!=='col'&&!hasK(c.e,'win')?i:-1).filter(i=>i>=0).slice(0,3);stages.push({id:'SELECT',label:'SELECT',cols:selCols,comp,rows:outRows.map(o=>({k:o.k,v:view(o),cs:comp.map(i=>[i,redSteps(items[i].e,o.ctx)])}))})}
  let out=outRows;
  if(q.distinct){const seen=new Set();const fl=out.map(o=>{const k=o.vals.map(keyStr).join('|');const d=seen.has(k);seen.add(k);return d});if(stages)stages.push({id:'DISTINCT',label:'DISTINCT',cols:selCols,rows:out.map((o,i)=>({k:o.k,v:view(o),drop:fl[i]}))});out=out.filter((_,i)=>!fl[i])}
  if(order){const keyOf=(o,it)=>{const e=it.e;if(e.k==='lit'&&e.v.t==='int'){const i=Number(e.v.n)-1;if(i<0||i>=items.length)E(108,`The ORDER BY position number ${i+1} is out of range of the number of items in the select list.`,15);return o.vals[i]}
@@ -978,7 +1060,7 @@ class Stage{
   const NS='http://www.w3.org/2000/svg';this.svg=document.createElementNS(NS,'svg');this.svg.setAttribute('class','arrows');this.svg.innerHTML='<defs>'+['k','r','l','v'].map(c=>`<marker id="ah-${c}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah ${c}"/></marker>`).join('')+'</defs><g></g>';this.inner.appendChild(this.svg);this.size=new Map();this.last=new Map();
   if(!Stage.meas){Stage.meas=document.createElement('div');Stage.meas.className='cmeas';document.body.appendChild(Stage.meas)}}
  layBlock(b,W){
-  if(b.t==='table'){const rows=b.rows||[],w=cw(b.cols,rows),TW=24+w.reduce((a,x)=>a+x,0);const its=[];let y=0;
+  if(b.t==='table'){const rows=b.rows||[],w=b.colW||cw(b.cols,rows),TW=24+w.reduce((a,x)=>a+x,0);const its=[];let y=0;
    if(b.name){its.push({k:b.k+':ttl',kind:'ttl'+(b.temp?' tmp':''),html:esc(b.name),x:0,y,w:TW,h:22});y+=26}
    its.push({k:b.k+':hdr',kind:'hdr',html:hdrHTML(b.cols,w),x:0,y,w:TW,h:26});y+=28;
    const seen={};rows.forEach((r,i)=>{let k=String(r.k??r.v[0]);if(seen[k]){seen[k]++;k+='#'+seen[k]}else seen[k]=1;its.push({k,kind:'row',cls:r.cls||'',html:rowHTML(r,w),x:0,y,w:TW,h:ROWH,seq:b.seq?i:null,from:r.from});y+=ROWH+2});
@@ -994,23 +1076,26 @@ class Stage{
   return{w:w||Math.min(W,b.minw||260),h:h||(b.minh||40),items:[{k:b.k,kind:'html',html:b.html,x:0,y:0,w:w||Math.min(W,b.minw||260),h:h||(b.minh||40)}]}}
  origin(k){if(this.pos.has(k))return this.pos.get(k);const c=[];if(k.includes('+')){const p=k.split('+');for(let i=p.length-1;i>0;i--)c.push(p.slice(0,i).join('+'));c.push('R:'+p[p.length-1])}if(/^[A-Z]\d+-/.test(k))c.push(k.split('-')[0]);if(/^[AB]:/.test(k))c.push(k.slice(2));const suf=k.includes(':')?k.slice(k.indexOf(':')+1):null;
   for(const x of c)if(this.pos.has(x))return this.pos.get(x);if(suf){if(this.pos.has(suf))return this.pos.get(suf);for(const [kk,p] of this.pos)if(kk!==k&&kk.endsWith(':'+suf))return p}return null}
- render(blocks,opt={}){if(typeof blocks==='string')blocks=htmlToBlocks(blocks);const FOC=opt.focus?new Set(opt.focus):null,MOV=new Set(opt.movers||[]);const W=Math.max(260,(this.el.clientWidth||700)-20);
+ render(blocks,opt={}){if(typeof blocks==='string')blocks=htmlToBlocks(blocks);const FOC=opt.focus?new Set(opt.focus):null,MOV=new Set(opt.movers||[]),FB=opt.focusBlocks||null;const W=Math.max(260,(this.el.clientWidth||700)-20);
   const laid=blocks.filter(Boolean).map(b=>({b,...this.layBlock(b,W)}));
   const lines=[];let cur=null;for(const L of laid){if(!cur||L.b.br||(cur.list.length&&cur.w+GAP+L.w>W)){cur={list:[],w:0,h:0};lines.push(cur)}cur.w+=(cur.list.length?GAP:0)+L.w;cur.h=Math.max(cur.h,L.h);cur.list.push(L)}
   const LW=Math.max(W,...lines.map(l=>l.w)),sc=W/LW;let y=8;const items=[];
-  for(const l of lines){let x=(LW-l.w)/2;for(const L of l.list){const dy=(l.h-L.h)/2*(L.b.t==='html'?1:0);L.items.forEach(it=>items.push({...it,x:it.x+x,y:it.y+y+dy}));x+=L.w+GAP}y+=l.h+GAP}
+  for(const l of lines){let x=(LW-l.w)/2;for(const L of l.list){const dy=(l.h-L.h)/2*(L.b.t==='html'?1:0);L.items.forEach(it=>items.push({...it,x:it.x+x,y:it.y+y+dy,_blk:L.b.k}));x+=L.w+GAP}y+=l.h+GAP}
   this.inner.style.transform=`scale(${sc})`;this.inner.style.width=LW+'px';this.el.style.height=Math.ceil((y+4)*sc)+'px';
   const reduce=RM(),seen=new Set();let nNew=0,nMove=0;const prevPos=new Map(this.pos);
   for(const it of items){seen.add(it.k);let d=this.map.get(it.k);const isNew=!d;
    if(isNew){d=document.createElement('div');d.dataset.k=it.k;this.inner.appendChild(d);this.map.set(it.k,d);const o=(it.from&&this.pos.get(it.from))||this.origin(it.k);
     d.style.transition='none';d.style.opacity='0';d.style.transform=o?`translate(${o.x}px,${o.y}px)`:`translate(${it.x}px,${it.y+14}px) scale(.96)`;d.style.width=it.w+'px';d.style.height=it.h+'px'}
-   const dimmable=/^(row|chip|bucket|free)/.test(it.kind);const cls='ci '+it.kind+' '+(it.cls||'')+(FOC&&dimmable&&!FOC.has(it.k)?' dim':'')+(MOV.has(it.k)?' mover':'')+(FOC&&FOC.has(it.k)?' foc':'');const clsChanged=d.className!==cls;d.className=cls;if(d._h!==it.html){d.innerHTML=it.html;d._h=it.html;if(!isNew&&it.kind!=='hdr'&&it.kind!=='ttl'){d.classList.add('swap');setTimeout(()=>d.classList.remove('swap'),700)}}
+   const dimmable=/^(row|chip|bucket)/.test(it.kind);const cls='ci '+it.kind+' '+(it.cls||'')+(FOC&&dimmable&&!FOC.has(it.k)?' dim':'')+(MOV.has(it.k)?' mover':'')+(FOC&&FOC.has(it.k)?' foc':'')+(FB&&!FB.includes(it._blk)?' pdim':'');const clsChanged=d.className!==cls;d.className=cls;if(d._h!==it.html){d.innerHTML=it.html;d._h=it.html;if(!isNew&&it.kind!=='hdr'&&it.kind!=='ttl'){d.classList.add('swap');setTimeout(()=>d.classList.remove('swap'),700)}}
    d.style.zIndex=it.z||3;const p=prevPos.get(it.k);const moved=!isNew&&p&&(Math.abs(p.x-it.x)>1||Math.abs(p.y-it.y)>1);
    let delay=0;if(isNew)delay=Math.min(nNew++*90,1400);else if(moved)delay=Math.min(nMove++*80,1300);if(it.seq!=null&&clsChanged)delay=Math.min(it.seq*160,2000);delay=delay/SPEED;
    it._d=d;it._delay=reduce?0:delay;it._new=isNew}
   for(const [k,d] of [...this.map]){if(!seen.has(k)){this.map.delete(k);d.style.transitionDelay='0ms';d.style.opacity='0';d.style.transform+=' scale(.9)';setTimeout(()=>d.remove(),1000/SPEED)}}
   void this.inner.offsetWidth;
-  for(const it of items){const d=it._d;d.style.transition=reduce?'none':'';d.style.transitionDelay=it._delay+'ms';d.style.transform=`translate(${it.x}px,${it.y}px)`;d.style.width=it.w+'px';d.style.height=it.h+'px';d.style.opacity='1'}
+  for(const it of items){const d=it._d;d.style.transition=reduce?'none':'';d.style.transitionDelay=it._delay+'ms';d.style.transform=`translate(${it.x}px,${it.y}px)`;d.style.width=it.w+'px';d.style.height=it.h+'px';d.style.opacity='1';
+   if(it.arc&&!it._new&&!reduce&&d.animate){const p=prevPos.get(it.k);if(p&&(Math.abs(p.x-it.x)>1||Math.abs(p.y-it.y)>1)){d.style.transitionProperty='width,height,opacity,background-color,border-color,filter,box-shadow';
+    const dir=it.x>=p.x?-1:1,mx=(p.x+it.x)/2,my=(p.y+it.y)/2+dir*it.arc;const D=(typeof ARROW_MS!=='undefined'?ARROW_MS:2000)/(typeof SPEED!=='undefined'?SPEED:1);
+    try{d.animate([{transform:`translate(${p.x}px,${p.y}px)`},{transform:`translate(${mx}px,${my}px) scale(1.08)`,offset:.5},{transform:`translate(${it.x}px,${it.y}px)`}],{duration:D,delay:it._delay,easing:'cubic-bezier(.45,0,.25,1)',fill:'backwards'})}catch(e){}}}}
   this.clearArrows();this.last=prevPos;this.pos=new Map(items.map(it=>[it.k,{x:it.x,y:it.y}]));this.size=new Map(items.map(it=>[it.k,{w:it.w,h:it.h}]));this.svg.setAttribute('width',LW);this.svg.setAttribute('height',y);
   return items.reduce((a,it)=>Math.max(a,it._delay),0)}
  clearArrows(){const g=this.svg.querySelector('g');if(g)g.innerHTML=''}
@@ -1057,10 +1142,12 @@ const MOVE_MS=2600,ARROW_MS=2600,SPEEDS=[1,0.75,0.5,1.25];
 function setSpeed(v){SPEED=v;document.documentElement.style.setProperty('--spd',String(v));try{localStorage.setItem('sqlMotionSpeed',String(v))}catch(e){}document.querySelectorAll('.spdbtn').forEach(b=>b.textContent=v+'×')}
 function cycleSpeed(){setSpeed(SPEEDS[(SPEEDS.indexOf(SPEED)+1)%SPEEDS.length])}
 document.documentElement.style.setProperty('--spd',String(SPEED));
-function typeHTML(el,html,speed){if(!el)return 0;if(el._tt){clearInterval(el._tt);el._tt=null}if(RM()||!html){el.innerHTML=html||'';return 0}
- const toks=html.match(/<[^>]+>|&[#\w]+;|[\s\S]/g)||[];let i=0,out='';el.innerHTML='';const per=Math.max(1,Math.round(2*(speed||1)));
+function typeHTML(el,html,speed,cps){if(!el)return 0;if(el._tt){clearInterval(el._tt);el._tt=null}if(RM()||!html){el.innerHTML=html||'';return 0}
+ const toks=html.match(/<[^>]+>|&[#\w]+;|[\s\S]/g)||[];let i=0,out='';el.innerHTML='';const nch=toks.filter(t=>t[0]!=='<').length;
+ if(cps){const tick=40,per=Math.max(1,Math.round(cps*(speed||1)*tick/1000));el._tt=setInterval(()=>{let n=0;while(i<toks.length&&n<per){const t=toks[i++];out+=t;if(t[0]!=='<')n++}el.innerHTML=out;if(i>=toks.length){clearInterval(el._tt);el._tt=null}},tick);return nch/per*tick}
+ const per=Math.max(1,Math.round(2*(speed||1)));
  el._tt=setInterval(()=>{let n=0;while(i<toks.length&&n<per){const t=toks[i++];out+=t;if(t[0]!=='<')n++}el.innerHTML=out;if(i>=toks.length){clearInterval(el._tt);el._tt=null}},16);
- return toks.filter(t=>t[0]!=='<').length/per*16}
+ return nch/per*16}
 const short=k=>String(k).replace(/^[AB]:/,'').replace(/^g:/,'').split('+').filter(x=>x!=='∅').join(' + ')||'(null)';
 const tvw=v=>v===null||v===undefined?'UNKNOWN':v?'TRUE':'FALSE';
 const MAXC=4;
@@ -1180,18 +1267,25 @@ function microFrames(st,prev){
 const normB=x=>typeof x==='string'?htmlToBlocks(x):Array.isArray(x)?x:x?[x]:[];
 /* frame player: play, pause, step one move forward/back */
 class Player{constructor(stage,narr,onProg){this.stage=stage;this.narr=narr;this.onProg=onProg||(()=>{});this.t=null;this.F=null;this.i=0;this.paused=false}
- load(frames,{onDone,wrap,paused,at}={}){this.halt();this.F=frames;this.done=onDone;this.wrap=wrap||(b=>b);this.paused=!!paused;this.i=at==='last'?frames.length-1:0;this.show();this.sched()}
- show(){const f=this.F[this.i];const md=this.stage.render(this.wrap(normB(f.blocks)),{focus:f.focus,movers:f.movers});this.md=md;
-  clearTimeout(this.ta);if(f.arrows&&f.arrows.length){const moving=f.arrows.some(a=>a.old);this.ta=setTimeout(()=>this.stage.drawArrows(f.arrows),moving?60:Math.min(500,md+200)/SPEED)}
-  this.tt=f.say?typeHTML(this.narr,f.say,SPEED):(this.narr&&(this.narr.innerHTML=''),0);this.onProg(this.i,this.F.length)}
- sched(){clearTimeout(this.t);if(this.paused||!this.F)return;const f=this.F[this.i];const moves=(f.movers&&f.movers.length)||(f.arrows&&f.arrows.length);const dur=(Math.max((f.dur||1200)*1.6,this.tt+1200)+(moves?MOVE_MS+500:600))/SPEED+this.md;
+ load(frames,{onDone,wrap,paused,at,read}={}){this.halt();this.F=frames;this.done=onDone;this.wrap=wrap||(b=>b);this.read=read||null;this.paused=!!paused;this.i=at==='last'?frames.length-1:0;this.show();this.sched()}
+ draw(){const f=this.F&&this.F[this.i];if(!f)return 0;this.tr=null;const md=this.stage.render(this.wrap(normB(f.blocks)),{focus:f.focus,movers:f.movers,focusBlocks:f.fb});this.md=md;
+  clearTimeout(this.ta);if(f.arrows&&f.arrows.length){const moving=f.arrows.some(a=>a.old);this.ta=setTimeout(()=>this.stage.drawArrows(f.arrows),moving?60:Math.min(500,md+200)/SPEED)}return md}
+ show(){const f=this.F[this.i];clearTimeout(this.tr);this.md=0;
+  this.tt=f.say?typeHTML(this.narr,f.say,SPEED,this.read?this.read.cps:0):(this.narr&&(this.narr.innerHTML=''),0);
+  /* readable mode: let the words start first, then move (so you know what to watch) */
+  this.pre=this.read&&!RM()?Math.min(this.read.preMax||1400,this.tt*.45):0;
+  if(this.pre>0)this.tr=setTimeout(()=>this.draw(),this.pre);else this.draw();
+  this.onProg(this.i,this.F.length)}
+ sched(){clearTimeout(this.t);if(this.paused||!this.F)return;const f=this.F[this.i];const moves=(f.movers&&f.movers.length)||(f.arrows&&f.arrows.length);
+  let dur;if(this.read){const chars=(f.say||'').replace(/<[^>]+>/g,'').length;dur=Math.max(this.tt,this.pre)+Math.max(1300,chars*this.read.hold)/SPEED+(moves?MOVE_MS*.85:500)/SPEED+(this.md||0)}
+  else dur=(Math.max((f.dur||1200)*1.6,this.tt+1200)+(moves?MOVE_MS+500:600))/SPEED+this.md;
   this.t=setTimeout(()=>{if(this.paused)return;if(this.i<this.F.length-1){this.i++;this.show();this.sched()}else{this.ended=true;this.done&&this.done()}},dur)}
- pause(){this.paused=true;clearTimeout(this.t);if(this.narr&&this.narr._tt){clearInterval(this.narr._tt);this.narr._tt=null;const f=this.F&&this.F[this.i];if(f&&f.say)this.narr.innerHTML=f.say}}
+ pause(){this.paused=true;clearTimeout(this.t);if(this.tr){clearTimeout(this.tr);this.draw()}if(this.narr&&this.narr._tt){clearInterval(this.narr._tt);this.narr._tt=null;const f=this.F&&this.F[this.i];if(f&&f.say)this.narr.innerHTML=f.say}}
  play(){this.paused=false;if(!this.F)return;this.ended=false;if(this.i>=this.F.length-1){this.ended=true;this.done&&this.done();return}this.sched()}
  next(){if(!this.F||this.i>=this.F.length-1)return false;this.i++;this.show();this.sched();return true}
  prev(){if(!this.F||this.i<=0)return false;this.i--;this.show();this.sched();return true}
  restart(){if(!this.F)return;this.i=0;this.show();this.sched()}
- halt(){clearTimeout(this.t);clearTimeout(this.ta);this.ended=false}
+ halt(){clearTimeout(this.t);clearTimeout(this.ta);clearTimeout(this.tr);this.tr=null;this.ended=false}
  stop(){this.halt();this.F=null}}
 
 /* ===================== shared: stages, steps, mini playground ===================== */
@@ -1828,20 +1922,182 @@ lab(el){let exists=true,rows=[[1,'A'],[2,'B'],[3,'C']],next=4,cols=['id','code']
 use:{title:'Add an "active" flag to every member',desc:'NOT NULL with a named DEFAULT fills existing rows in one step.',sql:['ALTER TABLE dbo.members ADD is_active BIT NOT NULL','    CONSTRAINT DF_members_is_active DEFAULT 1;','SELECT member_id, first_name, is_active FROM dbo.members;'],res:{cols:['member_id','first_name','is_active'],rows:MEM.map(m=>[m.member_id,m.first_name,1])}},
 rem:['NOT NULL on a table with rows needs a DEFAULT.','DELETE keeps IDENTITY counting; TRUNCATE resets it.','DROP removes the table itself. Pick the weakest tool that works.']});}
 
-/* ===== beginner: add "watch it run, row by row" steps powered by the engine ===== */
-{const add=(title,steps)=>{const t=TOPICS.find(x=>x.title===title);if(t)t.steps.push(...steps)};
- const W='<b>Watch it run, row by row.</b> ';
- const DQ="SELECT DISTINCT status\nFROM dbo.claims;";
- add('SELECT',[qs(DQ,'DISTINCT',W+'SELECT DISTINCT checks each row: a value seen before is removed, a new value is kept.',{strip:true}),qs(DQ,'RESULT','Only the <b>distinct</b> status values are returned.',{strip:true})]);
- const WQ="SELECT claim_id, member_id, amount\nFROM dbo.claims\nWHERE amount >= 300;";
- add('WHERE: filtering rows',[qs(WQ,'WHERE',W+'Each claim is tested against <code>amount &gt;= 300</code>. TRUE rows go to <b>kept</b>; FALSE and UNKNOWN (NULL amount) go to <b>removed</b>.',{strip:true}),qs(WQ,'RESULT','Only the kept rows are returned.',{strip:true})]);
- const OQ="SELECT TOP (3) claim_id, amount\nFROM dbo.claims\nORDER BY amount DESC;";
- add('ORDER BY, TOP, OFFSET',[qs(OQ,'ORDER BY',W+'ORDER BY picks the next row in order and moves it into the <b>sorted</b> list, one at a time.',{strip:true}),qs(OQ,'TOP','TOP (3) then walks down the sorted list: the first 3 are kept, the rest are cut.',{strip:true}),qs(OQ,'RESULT','The 3 largest claims are returned.',{strip:true})]);
- const AQ="SELECT COUNT(*) AS all_rows, COUNT(amount) AS priced,\n       SUM(amount) AS total\nFROM dbo.claims;";
- add('Aggregate functions',[qs(AQ,'GROUP BY',W+'With no GROUP BY, every row drops into <b>one single group</b>.',{strip:true}),qs(AQ,'RESULT','The group collapses into <b>one result row</b>. COUNT(*) counts all 8 rows; COUNT(amount) and SUM skip the NULL.',{strip:true})]);
- const GQ="SELECT member_id, COUNT(*) AS claims, SUM(amount) AS total\nFROM dbo.claims\nWHERE status = 'PAID'\nGROUP BY member_id\nHAVING SUM(amount) > 500;";
- add('GROUP BY and HAVING',[qs(GQ,'WHERE',W+'First WHERE keeps only PAID claims, one row at a time.',{strip:true}),qs(GQ,'GROUP BY','Each kept row drops into the bucket for its <b>member_id</b>.',{strip:true}),qs(GQ,'HAVING','HAVING tests each <b>whole bucket</b>: SUM(amount) &gt; 500.',{strip:true}),qs(GQ,'RESULT','One row per surviving bucket.',{strip:true})]);
-}
+/* ===================== SQL Motion v2: phased query animation ===================== */
+const QCH=7.6;
+const Cq=t=>`<code>${hl(String(t))}</code>`,Bq=t=>`<b>${esc(String(t))}</b>`;
+const SQL_WHY={
+ FROM:`SQL Server always starts with ${Bq('FROM')}: it needs the rows before it can do anything else, even though SELECT is written first.`,
+ JOIN:`${Bq('JOIN')} comes right after FROM: it pairs each row with matching rows from the other table.`,
+ WHERE:`${Bq('WHERE')} runs next, to throw away the rows you do not want before anything is grouped or selected.`,
+ 'GROUP BY':`${Bq('GROUP BY')} runs after WHERE, so only the rows that passed are put into groups.`,
+ HAVING:`${Bq('HAVING')} runs after grouping, because it tests whole groups, not single rows.`,
+ SELECT:`${Bq('SELECT')} runs late: now SQL Server builds the output columns, including any calculations, for each remaining row.`,
+ DISTINCT:`${Bq('DISTINCT')} works on the finished SELECT columns, removing repeated rows.`,
+ 'ORDER BY':`${Bq('ORDER BY')} runs near the end, which is why it can use the names given in SELECT.`,
+ TOP:`${Bq('TOP')} runs last: it keeps only the first rows of the sorted result.`,
+ OFFSET:`${Bq('OFFSET / FETCH')} runs last: it skips some rows and takes the next page.`,
+ RESULT:`What is left is the ${Bq('result')} that SSMS shows in the Results grid.`,
+ WINDOW:`${Bq('Window functions')} run after WHERE and GROUP BY but before ORDER BY: each row gets a value worked out from other rows, and no rows are collapsed.`,
+ WITH:`A ${Bq('CTE')} runs first and saves its rows as a temporary named result. The main query then reads from it like a table.`,
+ QUERY:`In a set operation, ${Bq('each query runs on its own first')}; then the two results are combined.`,
+ UNION:`${Bq('UNION')} stacks the two results and removes duplicate rows (UNION ALL keeps them).`,INTERSECT:`${Bq('INTERSECT')} keeps only rows found in both results.`,EXCEPT:`${Bq('EXCEPT')} keeps rows from the first result that are not in the second.`,
+ ROUND:`A ${Bq('recursive CTE')} runs in rounds: round 0 is the anchor, and each later round joins back to the rows found in the round before it.`};
+function sqlCodeBlock(P,cur,bub,extra){const L=P.lines;const w=Math.min(540,Math.max(270,Math.max(...L.map(s=>s.length))*QCH+60));
+ const its=[{k:'q:ttl',kind:'free lab2',html:'Query',x:22,y:0,w:120,h:20}];const cs=new Set(cur||[]);
+ L.forEach((s,i)=>its.push({k:`sq:${P.id}:${i}`,kind:'free code'+(cs.has(i)?' cur':''),html:`<span class="lnum">${i+1}</span>${hl(s)||'&nbsp;'}`,x:22,y:26+i*24,w:w-22,h:22}));
+ const first=cur&&cur.length?Math.min(...cur):null;its.push({k:'sptr',kind:'free ptr',html:'▶',x:0,y:first==null?2:26+first*24,w:20,h:22,z:6});
+ const by=26+L.length*24+10;
+ its.push({k:'evb',kind:'free evb wrap'+(bub?(bub.hot?' hot':''):' idle'),html:bub?`<span class="evl">${esc(bub.label)}</span><code>${hl(bub.text)}</code>`:'<span class="evl">solving</span><code>…</code>',x:0,y:by,w,h:58,z:7});
+ if(extra)its.push(...extra.map(t=>({...t,y:by+(t.dy||0)})));
+ return FREE('code',w,by+62,its)}
+function clauseText(P,id){const li=autoLines(P.lines,id);if(!li||!li.length)return '';return P.lines[li[0]].trim().replace(/[,;]$/,'')}
+function orderBlock(P,idx,hot){const W=250;const its=[{k:`o2:ttl:${P.id}`,kind:'free lab2',html:'Run order',x:10,y:0,w:140,h:20}];const n=P.stages.length;
+ let svg=`<svg class="fesvg" width="${W}" height="${30+n*38}"><defs><marker id="qa${P.id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fah"/></marker><marker id="qh${P.id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fahh"/></marker></defs>`;
+ for(let i=1;i<n;i++){const y1=30+(i-1)*38+26,y2=30+i*38;const h=hot&&i===idx;svg+=`<path d="M24,${y1} L24,${y2-2}" class="${h?'hot':''}" marker-end="url(#${h?'qh':'qa'}${P.id})"/>`}svg+='</svg>';
+ its.push({k:`o2:edges:${P.id}`,kind:'free fedges',html:svg,x:0,y:0,w:W,h:30+n*38,z:2});
+ P.stages.forEach((st,i)=>{const ct=st.id==='RESULT'?'rows returned':clauseText(P,st.id);const lab=`<b>${i+1}</b> ${esc(st.id)} <span class="ot">${esc(ct.replace(new RegExp('^'+st.id.replace(' ','\\s+'),'i'),'').trim().slice(0,26))}</span>`;
+  its.push({k:`on:${P.id}:${i}`,kind:'free fnode onode'+(i===idx?' cur':'')+(i<idx?' seen':''),html:lab,x:10,y:30+i*38,w:W-20,h:26,z:4})});
+ return FREE('order',W,30+n*38,its)}
+/* ---------- solving-step wording ---------- */
+const skelQ=t=>String(t).replace(/'[^']*'/g,'').replace(/[\w.]+/g,'').replace(/\s+/g,'');
+function sqlStepSay(prev,cur,i,n,what){
+ if(i===1&&skelQ(prev)===skelQ(cur)&&prev!==cur)return `Each column name is replaced by ${Bq('this '+what+'\u2019s value')}: ${Cq(prev)} becomes ${Cq(cur)}`;
+ if(/^CASE /.test(prev)&&/^CASE /.test(cur)){const a=prev.match(/WHEN (.+?) THEN/);const b=cur.match(/WHEN (.+?) THEN/);if(a&&b&&/^(TRUE|FALSE|UNKNOWN)$/.test(b[1]))return `The test ${Cq(a[1])} is ${Bq(b[1])}.${b[1]==='TRUE'?'':' So CASE moves on to the next WHEN.'}`;
+  if(a&&/^(FALSE|UNKNOWN)$/.test(a[1]))return `That WHEN failed, so CASE ${Bq('moves on')} to the next one: ${Cq(cur)}`;return `Next piece: ${Cq(prev)} becomes ${Cq(cur)}`}
+ if(/^CASE /.test(prev)&&!/^CASE /.test(cur))return `${/WHEN TRUE/.test(prev)?'This WHEN is TRUE, so':'No WHEN matched, so'} CASE gives ${Bq(cur)}.`;
+ if(i===1&&skelQ(prev)===skelQ(cur))return `Each column name is replaced by ${Bq('this '+what+'\u2019s value')}: ${Cq(prev)} becomes ${Cq(cur)}`;
+ if(i===n-1)return `${Bq('Solved')}: ${Cq(prev)} gives ${Cq(cur)}${cur==='UNKNOWN'?' (anything compared with NULL is UNKNOWN)':''}`;
+ return `Next piece: ${Cq(prev)} becomes ${Cq(cur)}`}
+const shortK=k=>String(k).replace(/^[AB]:/,'').replace(/^g:/,'').split('+').filter(x=>x!=='∅').join(' + ');
+const fixW=(cols,rows)=>cw(cols,rows);
+/* ---------- per-clause phases ---------- */
+function clausePhases(st,prev,P){const out=[];const add=o=>out.push(o);const G=null;
+ const trimmed=(cols,rows,keep)=>{const T=trimT(cols,rows,keep);T.w=fixW(T.cols,T.rows);return T};
+ if(st.err){add({data:[HB('err',errc(st.err))],say:esc(st.err.split('\n').pop())});return out}
+ if(st.id==='FROM'){const T=trimmed(st.cols,st.rows.map(r=>({k:r.k,v:r.v})));add({data:[TB({k:'T',name:st.label.replace(/^FROM\s+/,''),cols:T.cols,rows:T.rows,colW:T.w})],say:`SQL Server reads all ${Bq(st.rows.length+' rows')} from ${Bq(st.label.replace(/^FROM\s+/,''))}. Nothing is filtered yet.`,movers:T.rows.map(r=>r.k)});return out}
+ if(st.id==='JOIN'&&st.right){const nl=st.left.cols.length;const L0=trimmed(st.left.cols,st.left.rows),Rt=trimmed(st.right.cols,st.right.rows.map(r=>({k:'R:'+r.k,v:r.v})));
+  const keep=[0,1,nl,nl+1].filter(i=>i<st.cols.length);const RES=trimT(st.cols,st.rows.map(r=>({...r})),keep);RES.cols=RES.cols.slice(0,4);RES.rows=RES.rows.map(r=>({...r,v:r.v.slice(0,4)}));RES.w=fixW(RES.cols,RES.rows);
+  const resRows=done=>RES.rows.filter(r=>!r.lnull&&done.has(r.lk)).map(r=>({k:r.k,v:r.v,cls:r.rk==='∅'?'new':''}));
+  const mk=(done,cur,hit)=>[TB({k:'L',name:'left table',cols:L0.cols,colW:L0.w,rows:L0.rows.map(r=>({k:r.k,v:r.v,cls:r.k===cur?'cur':done.has(r.k)?'ghost':''}))}),
+   TB({k:'R',name:st.right.name,cols:Rt.cols,colW:Rt.w,rows:Rt.rows.map(r=>({k:r.k,v:r.v,cls:hit.has(r.k)?'pass':''}))}),TB({k:'J',name:'joined result',cols:RES.cols,colW:RES.w,rows:resRows(done)})];
+  add({data:mk(new Set(),null,new Set()),say:st.jtype==='CROSS'?`CROSS JOIN pairs ${Bq('every')} left row with every right row.`:`Each row on the left looks for partners on the right where ${Cq(st.on)}.`});
+  const done=new Set();const lrows=st.left.rows;const b=chunk(lrows.length);
+  for(let i=0;i<lrows.length;i+=b){const part=lrows.slice(i,i+b);const hit=new Set(),arr=[],made=[];const l=part[0];
+   const m=st.rows.filter(r=>r.lk===l.k&&r.rk!=='∅'&&!r.lnull),nul=st.rows.filter(r=>r.lk===l.k&&r.rk==='∅');
+   if(b===1){add({data:mk(done,l.k,new Set()),bub:{label:'matching '+shortK(l.k),text:st.on||'every pair'},say:`Row ${Bq(shortK(l.k))} looks for partners: ${Cq(st.on||'every right row')}`,focus:[l.k]});
+    m.forEach(r=>{hit.add('R:'+r.rk);arr.push({a:l.k,b:'R:'+r.rk,c:'l',t:r.why||'match'})});
+    add({data:mk(done,l.k,hit),bub:{label:'matching '+shortK(l.k),text:m.length?`${m[0].why||'match'} → TRUE`:'no match',hot:true},say:m.length?(()=>{const u=[...new Set(m.map(r=>r.why||'match'))];return `It finds ${Bq(m.length+' match'+(m.length>1?'es':''))}: ${u.slice(0,2).map(Cq).join(', ')} is ${Bq('TRUE')}${m.length>1&&u.length===1?' for each of them':''}.`})():`No row on the right makes ${Cq(st.on)} TRUE, so there is ${Bq('no match')}.`,arrows:arr.slice(0,3),focus:[l.k,...hit]})}
+   part.forEach(x=>{done.add(x.k);st.rows.filter(r=>r.lk===x.k&&!r.lnull).forEach(r=>made.push(r.k))});
+   add({data:mk(done,b===1?l.k:null,hit),say:b===1?(m.length?`${Bq(m.length+' joined row'+(m.length>1?'s are':' is'))} created from ${Bq(shortK(l.k))}.`:nul.length?`${Bq(shortK(l.k))} is ${Bq('kept with NULLs')} for the right side (that is what LEFT JOIN does).`:`${Bq(shortK(l.k))} is ${Bq('dropped')}: an INNER JOIN needs a match.`):`${part.length} more left rows are paired up.`,movers:made,focus:[...part.map(x=>x.k),...made]})}
+  const extra=RES.rows.filter(r=>r.lnull);if(extra.length)add({data:[...mk(done,null,new Set(extra.map(r=>'R:'+r.rk))).slice(0,2),TB({k:'J',name:'joined result',cols:RES.cols,colW:RES.w,rows:[...resRows(done),...extra.map(r=>({k:r.k,v:r.v,cls:'new'}))]})],say:`Right rows that never matched are kept too, with ${Bq('NULLs on the left')}.`,movers:extra.map(r=>r.k)});
+  add({data:mk(done,null,new Set()),say:`${Bq(RES.rows.length+' joined rows')} continue to the next step.`});return out}
+ if(st.id==='WINDOW'){const wc=st.wcol;const T=trimmed(st.cols,st.rows.map(r=>({...r})),[wc]);const wi=T.map.indexOf(wc);T.w=fixW(T.cols,T.rows);const n=T.rows.length,b=chunk(n);const col=st.cols[wc];
+  const mk=(upto,cur,frame)=>[TB({k:'W',name:'rows by partition',cols:T.cols,colW:T.w,rows:T.rows.map((r,i)=>({k:r.k,v:r.v.map((v,j)=>j===wi&&i>=upto?'…':v),cls:r.k===cur?'cur':frame.has(r.k)?'pass':r.g,c:i<upto&&wi>=0?{[wi]:'calc'}:{}}))})];
+  add({data:mk(0,null,new Set()),say:`Rows are lined up by ${Bq('partition')} (each colour is one partition). Every row will get its own ${Bq(col)} value; nothing is collapsed.`});
+  for(let i=0;i<n;i+=b){const part=T.rows.slice(i,i+b);const r=part[part.length-1];const fk=(r.fk||[]).filter(k=>k!==r.k);const val=r.v[wi];
+   let what,tx;if(['ROW_NUMBER','RANK','DENSE_RANK','NTILE'].includes(st.wf)){what=`its position in the partition is ${Bq(r.pos+1)}`;tx=`${st.wf}() → position ${r.pos+1}`}
+   else if(st.wf==='LAG'||st.wf==='LEAD'){what=r.fk&&r.fk.length?`it reads the ${st.wf==='LAG'?'previous':'next'} row, ${Bq(shortK(r.fk[0]))}`:`there is ${Bq('no '+(st.wf==='LAG'?'previous':'next')+' row')}`;tx=`${st.wf}(…) → ${r.fk&&r.fk.length?'row '+shortK(r.fk[0]):'none'}`}
+   else{what=`its window frame is ${Bq((r.fk||[]).map(shortK).join(', ')||'empty')}`;tx=`${st.wf}(…) over ${(r.fk||[]).length} row${(r.fk||[]).length===1?'':'s'}`}
+   if(b===1)add({data:mk(i,r.k,new Set(fk)),bub:{label:`${col} for ${shortK(r.k)}`,text:tx},say:`Row ${Bq(shortK(r.k))}: ${what}.`,arrows:fk.slice(-4).map(k=>({a:k,b:r.k,c:'v'})),focus:[r.k,...fk]});
+   add({data:mk(Math.min(n,i+b),r.k,new Set()),bub:b===1?{label:`${col} for ${shortK(r.k)}`,text:String(val??'NULL'),hot:true}:null,say:b===1?`So ${Bq(col)} = ${Bq(val??'NULL')} is written into row ${Bq(shortK(r.k))}.`:`${part.length} more rows get their ${Bq(col)}.`,focus:part.map(x=>x.k)})}
+  return out}
+ if(st.id==='WHERE'){const T=trimmed(st.cols,st.rows.map(r=>({k:r.k,v:r.v,tv:r.tv,steps:r.steps})));const R=T.rows,n=R.length,b=chunk(n);
+  const mk=(taken,check,verdict)=>[TB({k:'src',name:'rows to check',cols:T.cols,colW:T.w,rows:R.map(r=>taken.has(r.k)?{k:'gh:'+r.k,v:r.v,cls:'ghost'}:{k:r.k,v:r.v,cls:check===r.k?(verdict==null?'cur':(verdict?'pass':'fail')):''})}),
+   TB({k:'kept',name:'✓ kept (TRUE)',cols:T.cols,colW:T.w,rows:R.filter(r=>taken.has(r.k)&&r.tv).map(r=>({k:r.k,v:r.v,cls:'pass'}))}),
+   TB({k:'rem',name:'✕ removed (FALSE or UNKNOWN)',cols:T.cols,colW:T.w,rows:R.filter(r=>taken.has(r.k)&&!r.tv).map(r=>({k:r.k,v:r.v,cls:'fail'}))})];
+  add({data:mk(new Set()),say:`Every row is tested against ${Cq(st.src||'the condition')}. Only ${Bq('TRUE')} rows are kept; FALSE and UNKNOWN rows are removed.`});
+  const taken=new Set();
+  for(let i=0;i<n;i+=b){const part=R.slice(i,i+b);
+   if(b===1){const r=part[0];const steps=r.steps&&r.steps.length?r.steps:[st.src,tvw(r.tv)];
+    add({data:mk(new Set(taken),r.k,null),bub:{label:'testing '+shortK(r.k),text:steps[0]},say:`Row ${Bq(shortK(r.k))} is tested: ${Cq(steps[0])}`,focus:[r.k]});
+    for(let j=1;j<steps.length;j++)add({data:mk(new Set(taken),r.k,j===steps.length-1?!!r.tv:null),bub:{label:'testing '+shortK(r.k),text:steps[j],hot:j===steps.length-1},say:sqlStepSay(steps[j-1],steps[j],j,steps.length,'row'),focus:[r.k]})}
+   part.forEach(r=>taken.add(r.k));
+   add({data:mk(new Set(taken)),bub:b===1?{label:'testing '+shortK(part[0].k),text:tvw(part[0].tv),hot:true}:null,say:part.map(r=>`${Bq(shortK(r.k))} moves to ${r.tv?'<b class="okt">kept</b>':'<b class="bdt">removed</b>'}.`).join(' '),arrows:part.map(r=>({a:r.k,b:r.k,old:true,c:r.tv?'k':'r',t:r.tv?'TRUE → kept':tvw(r.tv)+' → removed'})),movers:part.map(r=>r.k),focus:part.flatMap(r=>[r.k,'gh:'+r.k])})}
+  const k=R.filter(r=>r.tv).length;add({data:mk(new Set(taken)),say:`${Bq(k+' kept')}, ${n-k} removed. Only the kept rows continue to the next step.`});return out}
+ if(st.id==='GROUP BY'&&prev&&prev.rows&&(()=>{const seen=new Set();for(const g of st.groups)for(const m of g.members){if(seen.has(m))return false;seen.add(m)}return true})()){const mem=new Map();st.groups.forEach(g=>g.members.forEach(m=>mem.set(m,g)));
+  const src=prev.rows.filter(r=>mem.has(r.k));const T=trimmed(prev.cols,src.map(r=>({k:r.k,v:r.v})));const R=T.rows,n=R.length,b=chunk(n);
+  const mk=(taken,cur)=>{const gs=st.groups.filter(g=>g.members.some(m=>taken.has(m))).map(g=>({k:g.k,label:g.label,members:g.members.filter(m=>taken.has(m)).map(m=>({k:m,text:shortK(m)}))}));
+   return[TB({k:'src',name:'rows',cols:T.cols,colW:T.w,rows:R.map(r=>taken.has(r.k)?{k:'gh:'+r.k,v:r.v,cls:'ghost'}:{k:r.k,v:r.v,cls:r.k===cur?'cur':''})}),BK(gs,{br:1,k:'bk'})]};
+  add({data:mk(new Set()),say:st.by?`Each row goes into the bucket for its ${Cq(st.by)} value. One bucket becomes one result row.`:`There is no GROUP BY, so ${Bq('every row goes into one single group')}.`});
+  const taken=new Set();
+  for(let i=0;i<n;i+=b){const part=R.slice(i,i+b);
+   if(b===1&&st.by){const r=part[0];add({data:mk(new Set(taken),r.k),bub:{label:'grouping '+shortK(r.k),text:`${st.by} = ${mem.get(r.k).label}`},say:`Row ${Bq(shortK(r.k))}: its ${Cq(st.by)} is ${Bq(mem.get(r.k).label)}.`,focus:[r.k]})}
+   part.forEach(r=>taken.add(r.k));const gk=[...new Set(part.map(r=>mem.get(r.k).k))];
+   add({data:mk(new Set(taken)),say:part.map(r=>`${Bq(shortK(r.k))} drops into bucket ${Bq(mem.get(r.k).label)}.`).join(' '),arrows:part.map(r=>({a:r.k,b:r.k,old:true,c:'v',t:'→ '+mem.get(r.k).label})),movers:part.map(r=>r.k),focus:[...part.map(r=>r.k),...gk,...part.map(r=>'gh:'+r.k)]})}
+  add({data:mk(new Set(taken)),say:`${Bq(st.groups.length+' bucket'+(st.groups.length===1?'':'s'))} are ready.`});return out}
+ if(st.id==='HAVING'){const gs=(upto,cur)=>st.groups.map((g,j)=>({k:g.k,label:g.label,tv:j<upto?g.tv:undefined,members:g.members.map(m=>({k:m,text:shortK(m)}))}));
+  add({data:[BK(gs(0),{br:1,k:'bk'})],say:`Each ${Bq('whole bucket')} is tested against ${Cq(st.src)}.`});
+  st.groups.forEach((g,i)=>{const steps=g.steps&&g.steps.length?g.steps:[st.src,tvw(g.tv)];
+   add({data:[BK(gs(i),{br:1,k:'bk'})],bub:{label:'testing bucket '+g.label,text:steps[0]},say:`Bucket ${Bq(g.label)} is tested: ${Cq(steps[0])}`,focus:[g.k,...g.members]});
+   for(let j=1;j<steps.length;j++)add({data:[BK(gs(i),{br:1,k:'bk'})],bub:{label:'testing bucket '+g.label,text:steps[j],hot:j===steps.length-1},say:j===1&&/\(/.test(steps[0])?`The aggregate is worked out for this bucket: ${Cq(steps[0])} becomes ${Cq(steps[1])}`:sqlStepSay(steps[j-1],steps[j],j,steps.length,'bucket'),focus:[g.k,...g.members]});
+   add({data:[BK(gs(i+1),{br:1,k:'bk'})],say:`Bucket ${Bq(g.label)} is ${g.tv?'<b class="okt">kept</b>':'<b class="bdt">removed</b> (it fades out)'}.`,focus:[g.k,...g.members]})});
+  return out}
+ if(st.id==='SELECT'){const grouped=prev&&prev.groups;const T=trimmed(st.cols,st.rows.map(r=>({k:r.k,v:r.v})),st.comp||[]);const ci=(st.comp||[]).map(i=>T.map.indexOf(i)).filter(i=>i>=0);
+  const outT=(upto,cls)=>TB({k:'sel',name:'SELECT output',cols:T.cols,colW:T.w,rows:T.rows.slice(0,upto).map((r,j)=>({k:r.k,v:r.v,cls:cls&&j===upto-1?cls:'',c:Object.fromEntries(ci.map(c=>[c,'calc']))}))});
+  if(grouped){const live=prev.groups.filter(g=>prev.id!=='HAVING'||g.tv===true);const bk=upto=>BK(live.slice(upto).map(g=>({k:g.k,label:g.label,members:g.members.map(m=>({k:m,text:shortK(m)}))})),{br:1,k:'bk'});
+   add({data:[bk(0),outT(0)],say:`SELECT turns ${Bq('each bucket into one row')}, working out the aggregates for that bucket.`});
+   st.rows.forEach((r,i)=>{(r.cs||[]).forEach(([c,steps])=>{if(!steps||steps.length<2)return;for(let j=1;j<steps.length;j++)add({data:[bk(i),outT(i)],bub:{label:'bucket '+shortK(r.k),text:steps[j],hot:j===steps.length-1},say:j===1?`For bucket ${Bq(shortK(r.k))}: ${Cq(steps[0])} becomes ${Cq(steps[1])}`:sqlStepSay(steps[j-1],steps[j],j,steps.length,'bucket'),focus:[r.k]})});
+    add({data:[bk(i+1),outT(i+1,'new')],say:`Bucket ${Bq(shortK(r.k))} becomes one output row.`,movers:[r.k],focus:[r.k]})});
+   return out}
+  if(!ci.length){add({data:[outT(T.rows.length)],say:`SELECT keeps only the columns you listed: ${Bq(st.cols.join(', '))}.`,movers:T.rows.map(r=>r.k)});return out}
+  const src=prev&&prev.rows?prev.rows.filter(r=>!r.drop&&(prev.id!=='WHERE'||r.tv)):[];const S=trimmed(prev?prev.cols:st.cols,src.map(r=>({k:r.k,v:r.v})));
+  const inT=upto=>TB({k:'in',name:'input rows',cols:S.cols,colW:S.w,rows:S.rows.map((r,j)=>j<upto?{k:'gh:'+r.k,v:r.v,cls:'ghost'}:{k:r.k,v:r.v,cls:j===upto?'cur':''})});
+  add({data:[inT(0),outT(0)],say:`SELECT builds each output row, working out ${Bq(st.comp.length===1?'the calculated column':'the calculated columns')} for that row.`});
+  const n=st.rows.length,b=chunk(n);
+  for(let i=0;i<n;i+=b){const part=st.rows.slice(i,i+b);
+   if(b===1){const r=part[0];(r.cs||[]).slice(0,2).forEach(([c,steps])=>{if(!steps||steps.length<2)return;const col=st.cols[c];
+     add({data:[inT(i),outT(i)],bub:{label:`${col} for ${shortK(r.k)}`,text:steps[0]},say:`Row ${Bq(shortK(r.k))}: work out ${Bq(col)} = ${Cq(steps[0])}`,focus:[r.k]});
+     for(let j=1;j<steps.length;j++)add({data:[inT(i),outT(i)],bub:{label:`${col} for ${shortK(r.k)}`,text:steps[j],hot:j===steps.length-1},say:sqlStepSay(steps[j-1],steps[j],j,steps.length,'row'),focus:[r.k]})})}
+   add({data:[inT(Math.min(n,i+b)),outT(Math.min(n,i+b),'new')],say:part.map(r=>`Row ${Bq(shortK(r.k))} goes into the output${(r.cs&&r.cs[0])?` with ${Bq(st.cols[r.cs[0][0]])} = ${Bq(r.v[r.cs[0][0]]??'NULL')}`:''}.`).join(' '),arrows:part.slice(0,1).map(r=>({a:'evb',b:r.k,c:'v',t:r.cs&&r.cs[0]?String(r.v[r.cs[0][0]]??'NULL'):null})),movers:part.map(r=>r.k),focus:part.map(r=>r.k)})}
+  return out}
+ if(['TOP','DISTINCT','OFFSET'].includes(st.id)){const T=trimmed(st.cols,st.rows.map(r=>({...r})));const n=T.rows.length,b=chunk(n);
+  const why=r=>st.id==='TOP'?(r.drop?'is beyond the limit, so it is <b class="bdt">cut</b>':'is within the limit, so it is <b class="okt">kept</b>'):st.id==='DISTINCT'?(r.drop?'repeats an earlier row, so it is <b class="bdt">removed</b>':'is seen for the first time, so it is <b class="okt">kept</b>'):(r.drop?'is outside this page, so it is <b class="bdt">skipped</b>':'is on this page, so it is <b class="okt">kept</b>');
+  add({data:[TB({k:'T',cols:T.cols,colW:T.w,rows:T.rows.map(r=>({k:r.k,v:r.v}))})],say:st.id==='TOP'?`${Bq(st.label)} keeps only the first rows, in the current order.`:st.id==='DISTINCT'?`Rows that are ${Bq('identical')} to an earlier row are removed.`:`${Bq(st.label)}: skip some rows, then take one page.`});
+  for(let i=0;i<n;i+=b){const part=T.rows.slice(i,i+b);add({data:[TB({k:'T',cols:T.cols,colW:T.w,rows:T.rows.map((r,j)=>({k:r.k,v:r.v,cls:j<i+b?(r.drop?'fail':'pass'):''}))})],say:part.map(r=>`Row ${Bq(r.v.join(', '))} ${why(r)}.`).join(' '),focus:part.map(r=>r.k)})}
+  return out}
+ if(st.id==='ORDER BY'&&prev&&prev.rows){const src=prev.rows.filter(r=>!r.drop&&(prev.id!=='WHERE'||r.tv));const T=trimmed(st.cols,st.rows.map(r=>({...r})));const S=trimmed(prev.cols||st.cols,src.map(r=>({k:r.k,v:r.v})));const n=T.rows.length,b=chunk(n);
+  const mk=(taken,cur)=>[TB({k:'U',name:'unsorted',cols:S.cols,colW:S.w,rows:S.rows.map(r=>taken.has(r.k)?{k:'gh:'+r.k,v:r.v,cls:'ghost'}:{k:r.k,v:r.v,cls:cur&&cur.has(r.k)?'cur':''})}),TB({k:'S',name:'sorted',cols:T.cols,colW:T.w,rows:T.rows.filter(r=>taken.has(r.k)).map(r=>({k:r.k,v:r.v}))})];
+  add({data:mk(new Set()),say:`Sorting by ${Cq(st.by)}. Each time, SQL Server picks the row that comes next in that order.`});const taken=new Set();
+  for(let i=0;i<n;i+=b){const part=T.rows.slice(i,i+b),ks=part.map(r=>r.k);
+   if(b===1)add({data:mk(new Set(taken),new Set(ks)),bub:{label:'sort key',text:`${st.by} = ${part[0].ks}`},say:`Next in order: row ${Bq(shortK(part[0].k))}, because its sort value is ${Bq(part[0].ks)}.`,focus:ks});
+   ks.forEach(k=>taken.add(k));add({data:mk(new Set(taken)),say:part.map((r,j)=>`${Bq(shortK(r.k))} takes position ${Bq(i+j+1)}.`).join(' '),arrows:part.map((r,j)=>({a:r.k,b:r.k,old:true,c:'v',t:'#'+(i+j+1)})),movers:ks,focus:[...ks,...ks.map(k=>'gh:'+k)]})}
+  return out}
+ if(st.id==='RESULT'){const T=trimmed(st.cols,st.rows.map(r=>({k:r.k,v:r.v})));add({data:[TB({k:'RES',name:'Results',cols:T.cols,colW:T.w,rows:T.rows.map(r=>({k:r.k,v:r.v,cls:'pass'}))})],say:`${Bq(st.rows.length+' row'+(st.rows.length===1?'':'s'))} returned. This is what you would see in SSMS.`});return out}
+ /* anything else: reuse the row-by-row frames */
+ microFrames(st,prev).forEach(f=>add({data:f.blocks,say:f.say,arrows:f.arrows,movers:f.movers,focus:f.focus}));return out}
+/* ---------- the whole query ---------- */
+function buildSQLFrames(P){if(P._F)return P._F;const F=[];let R;try{R=ENG.run(P.sql)}catch(e){P.stages=[{id:'ERROR'}];P.lines=P.sql.split('\n');F.push({blocks:[sqlCodeBlock(P,null,null),HB('err',errc(fmtErr(e)),{br:1})],say:esc(fmtErr(e).split('\n').pop()),fb:['code'],dur:1500});P._F=F;return F}
+ P.lines=P.sql.split('\n');P.stages=allStages(R);let lastData=[];
+ const frame=(idx,cur,bub,data,o)=>({blocks:[sqlCodeBlock(P,cur,bub,o.extra),orderBlock(P,idx,o.hot),...data],say:o.say,arrows:o.arrows||[],movers:o.movers||[],focus:o.focus,fb:o.fb,dur:o.dur||1200});
+ F.push(frame(-1,null,null,[],{say:`This query will run in ${Bq(P.stages.length-1+' steps')}. Watch the ${Bq('Run order')}: it is ${Bq('not')} the order the query is written in.`,fb:['code','order']}));
+ P.stages.forEach((st,i)=>{const cur=st.id==='RESULT'?[]:autoLines(P.lines,st.id);const written=cur&&cur.length?`line ${cur[0]+1}`:'';
+  F.push(frame(i,cur,null,lastData,{hot:true,say:`Step ${Bq(i+1)}: ${Bq(st.id)}${written?' ('+written+')':''}. ${SQL_WHY[st.id]||SQL_WHY[st.id.split(' ')[0]]||''}`,fb:['code','order']}));
+  const ph=clausePhases(st,P.stages[i-1],P);
+  ph.forEach(p=>F.push(frame(i,cur,p.bub||null,p.data,{say:p.say,arrows:p.arrows,movers:p.movers,focus:p.focus,fb:['code',...p.data.map(b=>b.k)]})));
+  if(ph.length)lastData=ph[ph.length-1].data});
+ const mx={};F.forEach(f=>f.blocks.forEach(b=>{if(b.t==='free'){const m=mx[b.k]||(mx[b.k]={w:0,h:0});m.w=Math.max(m.w,b.w);m.h=Math.max(m.h,b.h)}}));
+ F.forEach(f=>f.blocks.forEach(b=>{if(b.t==='free'&&mx[b.k]){b.w=mx[b.k].w;b.h=mx[b.k].h}}));
+ P._F=F;return F}
+let VIEWQ={order:true};try{const v=JSON.parse(localStorage.getItem('sqlMotionView')||'null');if(v)VIEWQ={...VIEWQ,...v}}catch(e){}
+const viewWrapQ=b=>b.filter(x=>!(x.k==='order'&&!VIEWQ.order));
+
+/* ===== SQL Beginner v2: phased query programs for each topic ===== */
+{const P=(cap,sql)=>({cap,sql});let pid=0;
+ const PROGS={
+ 'Database fundamentals':[P('A query asks a table for rows. Here SQL Server reads every row of <b>members</b>.','SELECT member_id, first_name, state\nFROM dbo.members;')],
+ 'Data types':[P('<b>CAST</b> changes a value from one data type to another. Watch DECIMAL amounts become whole numbers.',"SELECT claim_id, amount,\n       CAST(amount AS INT) AS whole_amount\nFROM dbo.claims\nWHERE claim_id IN ('C1', 'C2', 'C4');")],
+ 'SELECT':[P('SELECT picks columns. It is written first but runs <b>after FROM</b>.','SELECT claim_id, amount\nFROM dbo.claims;'),P('<b>DISTINCT</b> removes repeated rows from the finished SELECT columns.','SELECT DISTINCT status\nFROM dbo.claims;')],
+ 'WHERE: filtering rows':[P('Each row is tested; only TRUE rows stay. Watch C8, whose amount is NULL, become <b>UNKNOWN</b>.','SELECT claim_id, amount\nFROM dbo.claims\nWHERE amount >= 300;'),P('With <b>AND</b>, both parts must be TRUE. Watch SQL Server stop early when the first part is FALSE.',"SELECT claim_id, status, amount\nFROM dbo.claims\nWHERE status = 'PAID' AND amount > 200;")],
+ 'ORDER BY, TOP, OFFSET':[P('<b>ORDER BY</b> sorts, then <b>TOP</b> keeps the first rows.','SELECT TOP (3) claim_id, amount\nFROM dbo.claims\nORDER BY amount DESC;'),P('<b>OFFSET</b> skips rows and <b>FETCH</b> takes one page: page 2, three rows per page.','SELECT claim_id, amount\nFROM dbo.claims\nORDER BY claim_id\nOFFSET 3 ROWS FETCH NEXT 3 ROWS ONLY;')],
+ 'Calculated columns':[P('A calculated column is <b>solved for every row</b>, then placed in the output.',"SELECT claim_id, amount,\n       amount * 0.8 AS plan_pays\nFROM dbo.claims\nWHERE status = 'PAID';")],
+ 'String functions':[P('Functions are solved <b>inside out</b> for each row.','SELECT first_name,\n       UPPER(last_name) AS last_upper,\n       LEN(first_name) AS name_len\nFROM dbo.members;')],
+ 'Numeric functions':[P('<b>ROUND</b> works on the result of the multiplication.','SELECT claim_id, amount,\n       ROUND(amount * 1.075, 0) AS with_tax\nFROM dbo.claims\nWHERE amount < 300;')],
+ 'Date functions':[P('<b>DATEDIFF</b> counts the days between two dates.',"SELECT claim_id, service_date,\n       DATEDIFF(day, service_date, '2026-03-31') AS days_old\nFROM dbo.claims\nWHERE member_id = 101;")],
+ 'Conversion and NULL functions':[P('<b>ISNULL</b> swaps NULL for a value you choose.',"SELECT claim_id, amount,\n       ISNULL(amount, 0) AS amount_or_zero\nFROM dbo.claims\nWHERE status <> 'PAID';"),P('<b>COALESCE</b> returns the first value that is not NULL.',"SELECT first_name,\n       COALESCE(email, phone, 'no contact') AS contact\nFROM dbo.members;")],
+ 'CASE expressions':[P('<b>CASE</b> tries each WHEN in order and stops at the first TRUE.',"SELECT claim_id, amount,\n  CASE WHEN amount IS NULL THEN 'Not priced'\n       WHEN amount >= 1000 THEN 'High'\n       WHEN amount >= 250 THEN 'Medium'\n       ELSE 'Low' END AS band\nFROM dbo.claims;")],
+ 'Aggregate functions':[P('With no GROUP BY, all rows form <b>one group</b>, which becomes one row.','SELECT COUNT(*) AS all_rows,\n       COUNT(amount) AS priced,\n       SUM(amount) AS total\nFROM dbo.claims;')],
+ 'GROUP BY and HAVING':[P('Rows → buckets → test each bucket → one row per bucket.',"SELECT member_id, COUNT(*) AS claims,\n       SUM(amount) AS total\nFROM dbo.claims\nWHERE status = 'PAID'\nGROUP BY member_id\nHAVING SUM(amount) > 500;")]};
+ TOPICS.forEach(t=>{const ps=PROGS[t.title];if(!ps)return;ps.forEach(p=>{const prog={id:'q'+(++pid),sql:p.sql};t.steps.push({cap:`<b>Watch the query run.</b> ${p.cap}`,sql:p.sql.split('\n'),prog,get frames(){return buildSQLFrames(prog)}})})});}
 
 /* ===================== drag-and-drop query builder ===================== */
 const BSLOTS=['SELECT','FROM','JOIN','WHERE','GROUP BY','HAVING','ORDER BY'];
@@ -1878,6 +2134,7 @@ function initBuilder(root){let S={SELECT:['c.claim_id','c.amount'],FROM:['dbo.cl
   document.addEventListener('pointermove',mv);document.addEventListener('pointerup',up)});
  const VIEW=miniPG(q(root,'#bview'),[],{empty:1,hideText:1,strip:true});draw()}
 
+const PYREAD={cps:30,hold:10,preMax:1500};
 /* ===================== player ===================== */
 const IC={play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>',pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>',replay:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg>'};
 const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
@@ -1903,10 +2160,10 @@ function renderTopic(at){const tp=TOPICS[ti];drawList();
  $('#rem').innerHTML=tp.rem.map((r,i)=>`<li><b class="k">${i+1}</b><span>${r}</span></li>`).join('');
  if(LP)LP.stop();clearTimeout(NXT);window.SCN=new Stage($('#scene'));LP=new Player(SCN,$('#narr'),onMove);setTab(TAB);renderStep(at)}
 let LP=null,NXT=null;
-function stepFrames(tp,st){if(st.s&&st.s.stage)return microFrames(st.s.stage,st.s.prevStage);const sc=tp.scene(st.s||{},si);return[{blocks:typeof sc==='string'?htmlToBlocks(sc):sc,say:null,dur:2800}]}
+function stepFrames(tp,st){if(st.frames)return st.frames;if(st.s&&st.s.stage)return microFrames(st.s.stage,st.s.prevStage);const sc=tp.scene(st.s||{},si);return[{blocks:typeof sc==='string'?htmlToBlocks(sc):sc,say:null,dur:2800}]}
 function onMove(i,n){const s=$('#tline').querySelector('.seg.on');if(s)s.style.setProperty('--p',((i+1)/n).toFixed(3));$('#stepc').textContent=`Step ${si+1}/${TOPICS[ti].steps.length}`+(n>1?` · move ${i+1}/${n}`:'')}
 function renderStep(at){const tp=TOPICS[ti],st=tp.steps[si],last=si===tp.steps.length-1;clearTimeout(NXT);
- typeHTML($('#captxt'),st.cap,SPEED*1.6);
+ typeHTML($('#captxt'),st.cap,SPEED,45);
  $('#capnext').innerHTML=last&&ti<TOPICS.length-1?`<button class="lb pri" id="gonext">Next topic: ${esc(TOPICS[ti+1].title)} →</button>`:'';
  if(last&&ti<TOPICS.length-1)$('#gonext').onclick=()=>go(ti+1);
  const L=st.sql||tp.code,on=st.line??[];$('#code').innerHTML=codeHTML(L,on);const fl=$('#code').querySelector('.ln.on');if(fl&&$('#code').scrollHeight>$('#code').clientHeight)$('#code').scrollTop=Math.max(0,fl.offsetTop-40);
@@ -1914,8 +2171,8 @@ function renderStep(at){const tp=TOPICS[ti],st=tp.steps[si],last=si===tp.steps.l
  document.querySelector(`.qtabs [data-q="${st.err?'msg':'code'}"]`).click();
  $('#tline').innerHTML=tp.steps.map((_,i)=>`<button class="seg ${i<si?'done':i===si?'on':''}" data-s="${i}" aria-label="Step ${i+1}"></button>`).join('');
  if(last)markDone(ti);LS('sqlMotionBPos',JSON.stringify({ti,si}));
- const s=st.s||{};const wrap=bl=>[s.strip?HB('strip',orderStrip(s.strip),{br:1}):null,s.pre?HB('pre',s.pre,{br:1}):null,...bl,s.post?HB('post',s.post,{br:1}):null].filter(Boolean);
- LP.load(stepFrames(tp,st),{wrap,paused:!AUTOON,at,onDone:()=>{if(!AUTOON)return;if(si<TOPICS[ti].steps.length-1)NXT=setTimeout(()=>{if(AUTOON){si++;renderStep()}},1400/SPEED);else playIcon()}});
+ const s=st.s||{};const wrap=st.prog?viewWrapQ:(bl=>[s.strip?HB('strip',orderStrip(s.strip),{br:1}):null,s.pre?HB('pre',s.pre,{br:1}):null,...bl,s.post?HB('post',s.post,{br:1}):null].filter(Boolean));const qpEl=document.querySelector('.qp');if(qpEl)qpEl.hidden=!!st.prog;
+ LP.load(stepFrames(tp,st),{wrap,paused:!AUTOON,at,read:PYREAD,onDone:()=>{if(!AUTOON)return;if(si<TOPICS[ti].steps.length-1)NXT=setTimeout(()=>{if(AUTOON){si++;renderStep()}},1400/SPEED);else playIcon()}});
  navState();playIcon()}
 function navState(){const lastStep=si===TOPICS[ti].steps.length-1;$('#bprev').disabled=ti===0&&si===0&&LP.i===0;$('#bnext').disabled=ti===TOPICS.length-1&&lastStep&&LP.F&&LP.i>=LP.F.length-1}
 function playIcon(){const endAll=si===TOPICS[ti].steps.length-1&&LP.ended;const playing=AUTOON&&!endAll;
@@ -1951,6 +2208,8 @@ $('#userun').onclick=()=>{$('#pgcard').scrollIntoView({behavior:RM()?'auto':'smo
 function applyTheme(t){if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);else{document.documentElement.removeAttribute('data-theme');t='auto'}document.querySelectorAll('[data-theme-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeSet===t)));LS('sqlTheme',t)}
 applyTheme(LS('sqlTheme')||'auto');document.querySelectorAll('[data-theme-set]').forEach(b=>b.onclick=()=>applyTheme(b.dataset.themeSet));
 renderTopic();
+
+{const vb=document.getElementById('viewbar');if(vb){vb.querySelectorAll('input[data-v]').forEach(cb=>{cb.checked=!!VIEWQ[cb.dataset.v];cb.onchange=()=>{VIEWQ[cb.dataset.v]=cb.checked;try{localStorage.setItem('sqlMotionView',JSON.stringify(VIEWQ))}catch(e){}if(LP&&LP.F)LP.show()}})}}
 
 </script>
 </body>

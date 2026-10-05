@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SQL Motion: watch SQL Server queries run</title>
-<meta name="description" content="Animated, row-by-row lessons for SQL Server, from first SELECT to recursive CTEs, built on a small healthcare claims dataset.">
+<title>SQL Motion &amp; Python Motion: watch your code run</title>
+<meta name="description" content="Animated lessons for SQL Server and Python: watch every row and every line move, step by step, with readable explanations.">
 <script>try{var t=localStorage.getItem("sqlTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,6 +39,7 @@ h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;letter-spacing:-.035em;ma
 .lv h2{margin:0 0 6px;font-size:1.55rem;letter-spacing:-.02em;transition:color .2s}
 .lv p{margin:0;color:var(--mut);max-width:60ch}
 .go{align-self:center;background:var(--acc);color:var(--onacc);font:600 .9rem var(--sans);padding:10px 16px;border-radius:999px;white-space:nowrap}
+.track{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:40px 0 0;font-weight:700}
 .foot{margin-top:40px;color:var(--mut);font-size:.9rem;max-width:62ch}
 @media (max-width:640px){.lv{grid-template-columns:1fr;gap:6px}.go{justify-self:start;margin-top:8px}.brand{margin-bottom:36px}}
 @media (prefers-reduced-motion: reduce){.row{transition:none}}
@@ -46,9 +47,9 @@ h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;letter-spacing:-.035em;ma
 </head>
 <body>
 <div class="wrap">
-  <div class="brand"><span class="logo">SQL</span>SQL Motion</div>
-  <h1>Watch every row move through your query.</h1>
-  <p class="lede">Animated SQL Server lessons where each clause works one row at a time, with arrows showing where every value goes. Pause any moment, step one move forward or back, and slow it down until it clicks.</p>
+  <div class="brand"><span class="logo">▶</span>SQL Motion &amp; Python Motion</div>
+  <h1>Watch every row and every line move.</h1>
+  <p class="lede">Animated lessons where SQL Server runs your query one clause and one row at a time, and Python runs your program one line at a time. Each step says <b>where</b> it goes and <b>why</b>, solves expressions piece by piece, then shows the one thing that changes. Pause any moment and step forward or back.</p>
 
   <div class="demo" aria-label="Example animation: WHERE amount >= 300">
     <code>WHERE amount &gt;= 300</code>
@@ -56,13 +57,20 @@ h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;letter-spacing:-.035em;ma
     <div class="say" id="say" aria-live="polite"></div>
   </div>
 
-  <nav class="levels" aria-label="Levels">
-    <a class="lv" href="beginner.html"><span class="n">Topics 1–17</span><div><h2>Beginner</h2><p>Tables and keys, data types, SELECT, WHERE, sorting, functions, CASE, aggregates, GROUP BY and HAVING, and changing data.</p></div><span class="go">Start beginner</span></a>
-    <a class="lv" href="intermediate.html"><span class="n">Topics 18–39</span><div><h2>Intermediate</h2><p>Execution order, every kind of join, subqueries, CTEs, window functions, pivoting, design, procedures, transactions and indexes. Includes a drag-and-drop query builder.</p></div><span class="go">Start intermediate</span></a>
-    <a class="lv" href="advanced.html"><span class="n">Topics 40–57</span><div><h2>Advanced</h2><p>Recursive CTEs, advanced frames and analytics, execution plans, tuning, isolation and locking, dynamic SQL, triggers, partitioning, security and recovery.</p></div><span class="go">Start advanced</span></a>
+  <h2 class="track">SQL Server</h2>
+  <nav class="levels" aria-label="SQL levels">
+    <a class="lv" href="beginner.html"><span class="n">Topics 1–17</span><div><h2>SQL Beginner</h2><p>Tables and keys, data types, SELECT, WHERE, sorting, functions, CASE, aggregates, GROUP BY and HAVING, and changing data.</p></div><span class="go">Start</span></a>
+    <a class="lv" href="intermediate.html"><span class="n">Topics 18–39</span><div><h2>SQL Intermediate</h2><p>Execution order, every kind of join, subqueries, CTEs, window functions, pivoting, design, procedures, transactions and indexes. Includes a drag-and-drop query builder.</p></div><span class="go">Start</span></a>
+    <a class="lv" href="advanced.html"><span class="n">Topics 40–57</span><div><h2>SQL Advanced</h2><p>Recursive CTEs, advanced frames and analytics, execution plans, tuning, isolation and locking, dynamic SQL, triggers, partitioning, security and recovery.</p></div><span class="go">Start</span></a>
+  </nav>
+  <h2 class="track">Python</h2>
+  <nav class="levels" aria-label="Python levels">
+    <a class="lv" href="python-beginner.html"><span class="n">Topics 1–14</span><div><h2>Python Beginner</h2><p>How Python runs code, variables, numbers, strings, input, if/elif/else, logic, while and for loops, lists, dictionaries, functions, errors and problem-solving patterns.</p></div><span class="go">Start</span></a>
+    <a class="lv" href="python-intermediate.html"><span class="n">Topics 15–28</span><div><h2>Python Intermediate</h2><p>List toolkit, tuples, sets, nested records, comprehensions, functions and scope, string processing, files and CSV, raising errors, sorting with keys, classes, the standard library.</p></div><span class="go">Start</span></a>
+    <a class="lv" href="python-advanced.html"><span class="n">Topics 29–42</span><div><h2>Python Advanced</h2><p>Recursion, generators, closures, decorators, inheritance, special methods, copying, Big-O, sorting algorithms, hash maps, stacks and queues, context managers, sliding windows and two pointers.</p></div><span class="go">Start</span></a>
   </nav>
 
-  <p class="foot">Every page is a single file that works offline once loaded. Examples use a small, made-up health-plan dataset (members, claims, plans). Progress and your light or dark choice are saved in your browser.</p>
+  <p class="foot">Every page is a single file that works offline once loaded. Examples use a small, made-up health-plan dataset (members, claims, plans). Each lesson has a Try it or Solve it lab, a work example, key points, and a Playground or Practice section. Progress and your light or dark choice are saved in your browser.</p>
 </div>
 <script>
 (function(){
